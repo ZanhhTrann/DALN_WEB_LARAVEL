@@ -21,6 +21,11 @@
     align-items: center;
 }
 
+
+#header  .container a #brand{
+    color:rgb(255, 0, 0);
+}
+
 .header_logo {
     font-size: 18px;
     margin-right: 60px;
@@ -53,7 +58,7 @@
     margin: 0 6px;
 }
 .header_nav .login,
-.header_nav .login > i { 
+.header_nav .login > i {
     font-weight: 600;
 }
 .header_nav .login:hover,
@@ -201,9 +206,9 @@
     background-color: var(--overlay-bg);
 }
 
-.header_cart.overlay.active 
+.header_cart.overlay.active
 .header_cart-container,
-.wishlist.overlay.active 
+.wishlist.overlay.active
 .wishlist-container {
     right: 0;
 }
@@ -496,8 +501,8 @@
 }
 .header_menu li > .user_info .user_nav::before {
     left: 0%;
-    transform: 
-    translate(75%, -5%) 
+    transform:
+    translate(75%, -5%)
     rotate(45deg);
 
 }

@@ -7,7 +7,7 @@ $islogged=false;
 <header id="header" class="header_home ">
     <div class="container">
         <a href="pg_home/index.php" class="header_logo">
-            <b>CORNY</b>STORE
+            <b>H&M</b>STORE
         </a>
         <ul class="header_menu">
             <li class="item home">

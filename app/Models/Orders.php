@@ -18,6 +18,6 @@ class Orders extends Model
         'PMid',
         'SMid',
         'Order_date',
-        'Total_order_price'
+        'Total_order_price',
     ];
 }
