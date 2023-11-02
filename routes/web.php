@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.home.home');
 });
+// Trong routes/web.php
+// Route::get('/process-category', 'App\Http\Controllers\CategoriesController@processCategory')->name('process.category');
+// routes/web.php
+Route::post('/getChilCategory', 'App\Http\Controllers\CategoriesController@getChilCategory')->name('getChilCategory');
+

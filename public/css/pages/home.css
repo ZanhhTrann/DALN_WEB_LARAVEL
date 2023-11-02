@@ -17,7 +17,7 @@
 }
 
 .slider {
-    height: 100vh !important; 
+    height: 100vh !important;
     width: 100%;
 }
 .slider .item_1 {
@@ -264,7 +264,7 @@
 .filter_item.active {
     background-color: var(--blue);
 }
-.filter_item.active, 
+.filter_item.active,
 .filter_item.active .filter_item-icon i {
     color: var(--light-btn);
 }
@@ -272,6 +272,58 @@
     position: relative;
     flex-wrap: wrap;
 }
+/*  */
+
+.categories_sort {
+    width: 100%;
+    margin-top: 0px;
+    max-height: 0;
+    overflow: hidden;
+}
+.categories_sort.active {
+    margin-top: 20px;
+    max-height: 280px;
+}
+.categories_sort .row {
+    display: flex;
+    justify-content: space-between; /* Các cột sẽ căn cách đều nhau */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    flex-wrap: wrap; /* Cho phép các cột chuyển xuống hàng mới khi không đủ không gian */
+    padding: 27px 40px 0;
+    background-color: var(--light-btn);
+}
+
+/* .categories_sort .row .col {
+    width: 100%;
+} */
+.categories_sort .row .col {
+    padding: 0 15px 27px 0;
+}
+.categories_sort .row .col.color {
+    padding-bottom: 27px;
+}
+.categories_sort .row .col .text {
+    font-size: 16px;
+    line-height: 1.2;
+    color: var(--dark);
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+.categories_sort .row .col ul li {
+    padding-bottom: 6px;
+}
+.categories_sort .row .col ul li a {
+    color: var(--light-text);
+    line-height: 1.5;
+    border-bottom: 1px solid transparent;
+}
+.categories_sort .row .col ul li a.active,
+.categories_sort .row .col ul li a:hover {
+    color: var(--blue);
+    border-bottom: 1px solid var(--blue);
+}
+
+/*  */
 .products_sort {
     width: 100%;
     margin-top: 0px;

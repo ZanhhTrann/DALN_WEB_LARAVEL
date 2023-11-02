@@ -17,46 +17,32 @@ class ImportCategories extends Command
     }
 
     // Kiểm tra data có các trường cần thiết để sử dụng hay không và thêm vào database nếu hợp lệ.
-    public function __checkArray($subCatArray,$paCode,$count){
-        $freCode='';
-        if($paCode!=''){
-            $freCode=$paCode.'_';
+    public function __checkArray($subCatArray,$paValue){
+        if($paValue!=''){
+            $paValue=$paValue.'_';
         }
-        $subcheck=$count;
         foreach ($subCatArray as $category) {
             if(empty($category['tagCodes'])){
-                $categoryData = [
-                    'Categories_name' => $category['CatName'],
-                    'Api_value' => $category['CategoryValue'],
-                    'Api_code'=> $freCode.$category['CategoryValue'].'_'.$count
-                ];
-                $existingCategory = Categories::where('Api_code', $categoryData['Api_code'])->first();
-                if (!$existingCategory) {
-                    // 'Api_code' chưa tồn tại trong cơ sở dữ liệu, tiến hành thêm mới
-                    Categories::create($categoryData);
-                }
-                if(!isset($category['CategoriesArray'])){
-                    break;
-                }
-                $this->__checkArray($category['CategoriesArray'],$category['CategoryValue'],++$count);
-                break;
+                $code='';
+            }else{
+                $code=$category['tagCodes'][0];
+            }
+            $value=$paValue.$category['CategoryValue'];
+            $existingCategory = Categories::where('Api_value',$value)->first();
+            if ($existingCategory) {
+                continue;
             }
             $categoryData = [
                 'Categories_name' => $category['CatName'],
-                'Api_value' => $category['CategoryValue'],
-                'Api_code' => $freCode.$category['CategoryValue'].'_'. $count . '_' . $category['tagCodes'][0]
+                'Api_value' =>  $value,
+                'Api_code' => $code
                 // Các trường khác bạn muốn nhập vào cơ sở dữ liệu
             ];
-            $existingCategory = Categories::where('Api_code', $categoryData['Api_code'])->first();
-            if (!$existingCategory) {
-                // 'Api_code' chưa tồn tại trong cơ sở dữ liệu, tiến hành thêm mới
-                Categories::create($categoryData);
-            }
+            Categories::create($categoryData);
             if(!isset($category['CategoriesArray'])){
-                break;
+                continue;
             }
-            $this->__checkArray($category['CategoriesArray'],$category['CategoryValue'],$count);
-
+            $this->__checkArray($category['CategoriesArray'],$value);
         }
     }
 
@@ -80,7 +66,7 @@ class ImportCategories extends Command
 
         if ($response->successful()) {
             $data = $response->json();
-            $this->__checkArray($data,'',0);
+            $this->__checkArray($data,'');
             // Sau khi xử lý, bạn có thể lưu dữ liệu vào cơ sở dữ liệu như đã mô tả trong các câu trả lời trước.
         } else {
             echo $response->status();

@@ -15,8 +15,13 @@ class Products extends Model
         'Pid',
         'Cid',
         'Product_name',
+        'Main_image',
         'Price',
+        'Images',
+        'Colors',
+        'Sizes',
         'Description',
-        'Quantit_in_stock'
+        'Quantit_in_stock',
+        'Api_code'
     ];
 }
