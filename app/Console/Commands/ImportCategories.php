@@ -58,7 +58,7 @@ class ImportCategories extends Command
         ];
 
         $headers = [
-            'X-Rapidapi-Key' => '9b61b4e946msh46411aec102e2e0p1811f6jsnae1b7ff728c7',
+            'X-Rapidapi-Key' => '532d9547bfmsh5628301a30a1296p1a5667jsne5fb9db39543',
             'X-Rapidapi-Host' => 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com',
         ];
 

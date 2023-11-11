@@ -287,11 +287,16 @@
 .categories_sort .row {
     display: flex;
     justify-content: space-between; /* Các cột sẽ căn cách đều nhau */
-    align-items: center; /* Căn giữa theo chiều dọc */
-    flex-wrap: wrap; /* Cho phép các cột chuyển xuống hàng mới khi không đủ không gian */
+    align-items: stretch; /* Căn theo độ cao và độ rộng lớn nhất */
     padding: 27px 40px 0;
     background-color: var(--light-btn);
 }
+
+.categories_sort .row > * {
+    flex-grow: 1; /* Căn theo độ cao (height) lớn nhất */
+}
+
+
 
 /* .categories_sort .row .col {
     width: 100%;
@@ -313,6 +318,7 @@
     padding-bottom: 6px;
 }
 .categories_sort .row .col ul li a {
+    font-size: 12px;
     color: var(--light-text);
     line-height: 1.5;
     border-bottom: 1px solid transparent;

@@ -3,35 +3,34 @@ session_start();
 $url_folder='';
 $url_base='';
 $islogged=false;
+// dd(session('pages'));
 ?>
+
 <header id="header" class="header_home ">
     <div class="container">
-        <a href="pg_home/index.php" class="header_logo">
+        <a href="{{ route('pages.index', ['page' => 'home']) }}" class="header_logo">
             <b>H&M</b>STORE
         </a>
         <ul class="header_menu">
-            <li class="item home">
-                <a href="pg_home/index.php">Home</a>
+            <li class="item products {{ (session('head_pages') == 'home') ? 'active' : '' }}">
+                <a href="{{ route('pages.index', ['page' => 'home']) }}">Home</a>
             </li>
-            <li class="item products">
-                <a href="pg_shop/index.php">Shop</a>
+            <li class="item products {{ (session('head_pages') == 'shop') ? 'active' : '' }}">
+                <a href="{{ route('pages.index', ['page' => 'shop']) }}">Shop</a>
             </li>
-            <li class="item features">
-                <a href="pg_features/index.php">Features</a>
+            <li class="item features {{ (session('head_pages') == 'features') ? 'active' : '' }}">
+                <a href="{{route('pages.index',['page'=>'features'])}}">Features</a>
             </li>
-            <li class="item ">
-                <a href="">Blog</a>
+            <li class="item about {{ (session('head_pages') == 'about') ? 'active' : '' }}">
+                <a href="{{route('pages.index',['page'=>'about'])}}">About</a>
             </li>
-            <li class="item about">
-                <a href="pg_about/index.php">About</a>
-            </li>
-            <li class="item contact">
-                <a href="pg_contact/index.php">Contact</a>
+            <li class="item contact {{ (session('head_pages') == 'contact') ? 'active' : '' }}">
+                <a href="{{route('pages.index',['page'=>'contact'])}}">Contact</a>
             </li>
             <li>
                 <?php
                 if($islogged == false) { ?>
-                <a href="UI_user/login.php" class="login">
+                <a href="{{route('pages.index',['page'=>'signup'])}}" class="login">
                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     LOGIN
                 </a>
@@ -63,7 +62,7 @@ $islogged=false;
         <div class="header_nav">
             <?php
             if($islogged == false) { ?>
-            <a href="UI_user/login.php" class="login">
+            <a href="{{route('pages.index',['page'=>'signup'])}}" class="login">
                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
                 LOGIN
             </a>
@@ -117,15 +116,17 @@ $islogged=false;
     </div>
 
     <div class="header_search">
-        <form class="container">
+        <form class="container" method="POST" id="searchForm" action="{{ route('search') }}">
+            @csrf
             <div class="icon-close">
                 <i class="fa-solid fa-xmark"></i>
             </div>
             <button class="btn_icon-search">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-            <input type="text" name="search" placeholder="Search...">
+            <input type="text" id="searchInput" name="search" placeholder="Search..." required>
         </form>
+
     </div>
 </header>
 
@@ -178,7 +179,7 @@ $islogged=false;
             <?php } else{?>
             <div class="no_cart">
                 <h3>🛒 <i>Your cart is empty</i> 🛒</h3>
-                <img src="<?php echo $url_base."assets/imgs/empty-cart.png"?>" alt="">
+                <img src="{{asset('imgs/empty_cart.png')}}" alt="">
             </div>
             <?php }?>
         </div>
@@ -197,16 +198,14 @@ $islogged=false;
         <div class="container">
             <?php if($islogged) {?>
             <ul class="wishlist-container_list">
-                <?php if(mysqli_num_rows($show_wishlist_detail_ori) > 0) {
-                    while($row_wishlist_ori = mysqli_fetch_assoc($show_wishlist_detail_ori)) { ?>
                 <li>
                     <a class="item_img"
-                    href=""wishlist/wishlist_delete.php?product_id=".$row_wishlist_ori['product_id']?>">
+                    href="">
                         <img alt=""
                         src="<?php echo $url_base."admin/uploads/".$row_wishlist_ori['product_img']?>">
                     </a>
                     <div class="item_info">
-                        <a href=""pg_shop/product-detail.php?product_id=".$row_wishlist_ori['product_id']?>"
+                        <a href=""
                         class="info_name"><?php echo $row_wishlist_ori['product_name']?></a>
                         <div class="info_number">
                             <span class="price">$
@@ -215,12 +214,12 @@ $islogged=false;
                         </div>
                     </div>
                 </li>
-                <?php }}?>
+                <?php ?>
             </ul>
             <?php } else{?>
             <div class="no_cart">
                 <h3>🛒 <i>Your wishlist is empty</i> 🛒</h3>
-                <img src="<?php echo $url_base."assets/imgs/empty-cart.png"?>" alt="">
+                <img src="{{asset('imgs/empty_cart.png')}}" alt="">
             </div>
             <?php }?>
         </div>

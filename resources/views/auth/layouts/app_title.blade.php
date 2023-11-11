@@ -26,25 +26,10 @@
     <!-- Icon -->
     <link rel="icon" type="image/x-icon" href="{{asset('imgs/logo_website.png')}}">
     <!-- Link CSS -->
-    <link rel="stylesheet" href="{{asset('css/layouts_css/style.css')}}">
-    <link rel="stylesheet" href="{{asset("css/layouts_css/header.css")}}">
-    <link rel="stylesheet" href="{{asset('css/layouts_css/footer.css')}}">
-    <link rel="stylesheet" href="{{asset('css/layouts_css/owl.css')}}">
-    <link rel="stylesheet" href="{{asset('css/pages/home.css')}}">
-    <link rel="stylesheet" href="{{asset('css/pages/products.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <!-- Link Responsive -->
-    <link rel="stylesheet" href="{{asset('css/responsive/responsive.css')}}">
     <style>.header_menu .home a{color: var(--blue)}</style>
 </head>
 <body>
-    {{-- app header layouts --}}
-    @include('auth.includes.header')
     {{-- main content --}}
     @yield('content')
-    {{-- app footer layouts --}}
-    @include('auth.includes.footer')
-    {{-- <script src="{{asset('js/main.js')}}"></script> --}}
-    <script src="{{asset('js/owl_carousel.js')}}"></script>
 </body>
 </html>

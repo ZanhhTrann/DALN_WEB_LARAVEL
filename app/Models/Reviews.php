@@ -17,6 +17,5 @@ class Reviews extends Model
         'Uid',
         'Rating',
         'Review',
-        'Review_date'
     ];
 }

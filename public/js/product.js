@@ -1,22 +1,4 @@
 // SECTION
-const take_one = document.querySelector.bind(document);
-const take_all = document.querySelectorAll.bind(document);
-const products_list = take_one('.products_list');
-const heart_icons = take_all('.products_list .item_detail .icon');
-const filter_item = take_one('#section .overview_product .filter_item')
-const products_sort = take_one('#section .overview_product .products_sort')
-const categories_sort=take_one('#section .overview_product .categories_sort')
-const btn_view = take_all('.products_list-item .btn_view');
-const item_detail_price = take_all('.item_detail-price span');
-const sort_list_item = take_all('.sort_list-item');
-const sort_list_item_a = take_all('.sort_list-item a');
-// overlay
-const overlay_quick_view = take_one('.overlay_quick_view');
-const close_quick_view = take_one('.close_quick_view')
-const open_quick_view = take_all('.products_list-item .item_img .btn');
-const next_img_desc = take_all('.btn_next')
-const prev_img_desc = take_all('.btn_prev')
-const slide_banner = take_all('.slide_banner');
 
 // overlay
 open_quick_view.forEach(function(e, index) {
@@ -92,27 +74,27 @@ sort_list_item.forEach(function(e, index) {
         sort_list_item_a[index].classList.add('active');
     })
 })
-function sort_product_by_price(isReverse = false) {
-    var arr_price = [];
-    var htmls = [];
-    let products_item = take_all('.products_list-item')
-    let item_detail_price = take_all('.item_detail-price span');
-    item_detail_price.forEach(function(e, index) {
-        arr_price.push({
-            product_id: btn_view[index].value,
-            price: e.innerText*1,
-            contents: products_item[index].outerHTML
-        });
-    })
-    arr_price.sort((a, b) => a.price - b.price);
-    console.log(arr_price);
-    // CHECKING IS REVERSE
-    if(isReverse) { arr_price.reverse(); }
-    for(var i = 0; i< arr_price.length; i++) {
-        htmls.push(arr_price[i].contents);
-    }
-    products_list.innerHTML = htmls.join('');
-}
-function sort_product_by_default() {
-    products_list.innerHTML = arr_default.join('');
-}
+// function sort_product_by_price(isReverse = false) {
+//     var arr_price = [];
+//     var htmls = [];
+//     let products_item = take_all('.products_list-item')
+//     let item_detail_price = take_all('.item_detail-price span');
+//     item_detail_price.forEach(function(e, index) {
+//         arr_price.push({
+//             product_id: btn_view[index].value,
+//             price: e.innerText*1,
+//             contents: products_item[index].outerHTML
+//         });
+//     })
+//     arr_price.sort((a, b) => a.price - b.price);
+//     console.log(arr_price);
+//     // CHECKING IS REVERSE
+//     if(isReverse) { arr_price.reverse(); }
+//     for(var i = 0; i< arr_price.length; i++) {
+//         htmls.push(arr_price[i].contents);
+//     }
+//     products_list.innerHTML = htmls.join('');
+// }
+// function sort_product_by_default() {
+//     products_list.innerHTML = arr_default.join('');
+// }

@@ -18,6 +18,8 @@ const close_overlay_btn = take_one('.header_cart-container_title .icon')
 const header_wishlist_overlay = take_one('.wishlist.overlay')
 const close_wishlist = take_one('.wishlist-container_title .icon')
 
+$(document).ready(function () {
+
 window.addEventListener("scroll", function() {
     // $(document).width() > 992
     if(window.scrollY > 0) {
@@ -94,6 +96,8 @@ close_wishlist.addEventListener('click', function(e) {
     icon_heart.classList.toggle('active')
 })
 
+
+});
 
 
 
