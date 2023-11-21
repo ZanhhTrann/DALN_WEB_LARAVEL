@@ -14,6 +14,7 @@ class Shipping_methods extends Model
     protected $fillable = [
         'SMid',
         'Shipping_methods_name',
+        'price',
         'Discription'
     ];
 }

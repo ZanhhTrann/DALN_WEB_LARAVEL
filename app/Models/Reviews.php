@@ -15,8 +15,6 @@ class Reviews extends Model
         'Rid',
         'Pid',
         'Uid',
-        'Rating',
-        'Review',
-        'Review_date'
+        'reviews',
     ];
 }

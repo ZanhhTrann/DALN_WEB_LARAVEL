@@ -15,6 +15,8 @@ class Orders_details extends Model
         'ODid',
         'Oid',
         'Pid',
+        'color',
+        'size',
         'Quantily',
         'PPatToO'
     ];

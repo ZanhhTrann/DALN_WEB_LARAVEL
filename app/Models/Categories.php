@@ -14,6 +14,7 @@ class Categories extends Model
     protected $fillable = [
         'Cid',
         'Categories_name',
-        'Description'
+        'Api_value',//dùng để xác định categories con.
+        'Api_code'
     ];
 }

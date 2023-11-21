@@ -1,3 +1,21 @@
+* {
+    scrollbar-width: thin; /* Đảm bảo thanh cuộn hiển thị trên /* Màu sắc của thanh cuộn */
+}
+
+/* Áp dụng cho thanh cuộn trên WebKit (Chrome, Safari) */
+*::-webkit-scrollbar {
+    width: 12px; /* Đặt chiều rộng thanh cuộn */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--blue); /* Màu nền của thanh cuộn */
+    border-radius: 10px; /* Độ cong góc của thanh cuộn */
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--background-color); /* Màu nền phía sau thanh cuộn */
+}
+
 /* HOME */
 #header.header_home {
     background-color: transparent;
@@ -17,7 +35,7 @@
 }
 
 .slider {
-    height: 100vh !important; 
+    height: 100vh !important;
     width: 100%;
 }
 .slider .item_1 {
@@ -264,7 +282,7 @@
 .filter_item.active {
     background-color: var(--blue);
 }
-.filter_item.active, 
+.filter_item.active,
 .filter_item.active .filter_item-icon i {
     color: var(--light-btn);
 }
@@ -272,6 +290,64 @@
     position: relative;
     flex-wrap: wrap;
 }
+/*  */
+
+.categories_sort {
+    width: 100%;
+    margin-top: 0px;
+    max-height: 0;
+    overflow: hidden;
+}
+.categories_sort.active {
+    margin-top: 20px;
+    max-height: 280px;
+}
+.categories_sort .row {
+    display: flex;
+    justify-content: space-between; /* Các cột sẽ căn cách đều nhau */
+    align-items: stretch; /* Căn theo độ cao và độ rộng lớn nhất */
+    padding: 27px 40px 0;
+    background-color: var(--light-btn);
+}
+
+.categories_sort .row > * {
+    flex-grow: 1; /* Căn theo độ cao (height) lớn nhất */
+}
+
+
+
+/* .categories_sort .row .col {
+    width: 100%;
+} */
+.categories_sort .row .col {
+    padding: 0 15px 27px 0;
+}
+.categories_sort .row .col.color {
+    padding-bottom: 27px;
+}
+.categories_sort .row .col .text {
+    font-size: 16px;
+    line-height: 1.2;
+    color: var(--dark);
+    font-weight: 600;
+    padding-bottom: 15px;
+}
+.categories_sort .row .col ul li {
+    padding-bottom: 6px;
+}
+.categories_sort .row .col ul li a {
+    font-size: 12px;
+    color: var(--light-text);
+    line-height: 1.5;
+    border-bottom: 1px solid transparent;
+}
+.categories_sort .row .col ul li a.active,
+.categories_sort .row .col ul li a:hover {
+    color: var(--blue);
+    border-bottom: 1px solid var(--blue);
+}
+
+/*  */
 .products_sort {
     width: 100%;
     margin-top: 0px;

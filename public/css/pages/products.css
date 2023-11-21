@@ -4,6 +4,40 @@
     box-shadow: 0 2px 5px var(--shadow);
 }
 
+/* pagination */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+    border-radius:50%;
+
+}
+
+.pagination a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 50%;
+    color: #333;
+    text-decoration: none;
+}
+
+.pagination .active {
+    background-color: var(--blue); /* Màu nền */
+}
+
+.pagination .active a{
+    color: #ffffff; /* Màu chữ */
+    border: 2px solid var(--blue); /* Đường viền bo xung quanh */
+}
 
 /* SECTION */
 #section.section_product {

@@ -28,9 +28,14 @@
     line-height: 2;
     letter-spacing: 1.5px;
 }
+
 #footer .row .col li:hover a {
     color: var(--blue);
 }
+#footer .row .col li.active a {
+    color: var(--blue);
+}
+
 #footer .row .col p {
     max-width: 270px;
     line-height: 2;
