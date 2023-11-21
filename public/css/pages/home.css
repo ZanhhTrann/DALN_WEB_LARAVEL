@@ -1,3 +1,21 @@
+* {
+    scrollbar-width: thin; /* Đảm bảo thanh cuộn hiển thị trên /* Màu sắc của thanh cuộn */
+}
+
+/* Áp dụng cho thanh cuộn trên WebKit (Chrome, Safari) */
+*::-webkit-scrollbar {
+    width: 12px; /* Đặt chiều rộng thanh cuộn */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--blue); /* Màu nền của thanh cuộn */
+    border-radius: 10px; /* Độ cong góc của thanh cuộn */
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--background-color); /* Màu nền phía sau thanh cuộn */
+}
+
 /* HOME */
 #header.header_home {
     background-color: transparent;

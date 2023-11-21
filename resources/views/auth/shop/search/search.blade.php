@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{asset('css/pages/products.css')}}">
 @extends('auth.layouts.app')
 @section('content')
 <section id="section" class="section_product">
@@ -15,12 +16,12 @@
                 @include('auth.shop.search.includes.product_sort')
             </div>
             <div class="products_list" id="ListProducts">
-                @include('auth.shop.search.includes.list_products',[''])
+                @include('auth.shop.search.includes.list_products')
 
                 <!-- overlay quick view -->
                 @include('auth.home.quick_view.quick_view')
             </div>
-             @include('auth.shop.includes.pagination',['pages'=>session('pages')])
+             @include('auth.shop.search.includes.pagination',['pages'=>session('pages')])
         </div>
     </div>
 </section>

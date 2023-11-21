@@ -10,8 +10,14 @@ class User_cart extends Model
     use HasFactory;
     protected $table = 'User_cart';
 
+    protected $primaryKey = 'UCid';
+
     protected $fillable = [
+        'UCid',
         'Uid',
         'Pid',
+        'quantity',
+        'size',
+        'color'
     ];
 }

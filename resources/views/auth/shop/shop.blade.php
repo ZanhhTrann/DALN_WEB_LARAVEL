@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{asset('css/pages/products.css')}}">
 @php
     $catController=new \App\Http\Controllers\CategoriesController();
     $perCats=$catController->__getCats('');

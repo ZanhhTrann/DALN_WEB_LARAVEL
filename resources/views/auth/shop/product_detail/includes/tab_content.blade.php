@@ -2,9 +2,15 @@
     $sizes = array_filter(explode("|end|",$product->Sizes));
     $Colors = array_filter(explode("|end|",$product->Colors));
     $proController=new \App\Http\Controllers\ProductsController();
+    $user=new \App\Http\Controllers\UsersController();
     $Request=$proController->getReviewsbyId($product->Pid);
     $reviews=$Request['reviews'];
+    // dd($reviews[0]);
     $users_name=$Request['users_name'];
+    $your_name='';
+    $your_rev='';
+    // dd($users_name[0]);
+    $reCheck=false;
 @endphp
 
 <div class="tab_contents">
@@ -78,33 +84,96 @@
                     <ul class="reviews-list">
                         @if(!empty($reviews))
                             @foreach($reviews as $key=>$review)
-                                <li>
-                                    <div class="user_img">
-                                        <img alt=""
-                                        src="{{asset('img/logo_web.png')}}">
-                                    </div>
-                                    <div class="user_text">
-                                        <p class="name">{{$users_name[$key]}}</p>
-                                        <p class="comment">{{$review['Review']}}</p>
-                                    </div>
-                                </li>
+                                @if(session('login'))
+                                    @if($review->Uid==session('login')['user_id'])
+                                        @php
+                                            $reCheck=true;
+                                            $your_name=$users_name[$key]->Name;
+                                            $your_rev=$review->reviews;
+                                        @endphp
+                                    @endif
+                                    @if($review->Uid!=session('login')['user_id'])
+                                        <li>
+                                            <div class="user_img">
+                                                @if($proController->getAvata($review->Uid)!=null)
+                                                    <img src="data:image/jpeg;base64,{{$proController->getAvata($review->Uid)}}" alt="">
+                                                @else
+                                                    <img src="{{asset('imgs/logo_website.png')}}" alt="">
+                                                @endif
+                                            </div>
+                                            <div class="user_text">
+                                                <p class="name">{{$users_name[$key]->Name}}</p>
+                                                <p class="comment">{{$review->reviews}}</p>
+                                            </div>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li>
+                                        <div class="user_img">
+                                            @if($proController->getAvata($review->Uid)!=null)
+                                                <img src="data:image/jpeg;base64,{{$proController->getAvata($review->Uid)}}" alt="">
+                                            @else
+                                                <img src="{{asset('imgs/logo_website.png')}}" alt="">
+                                            @endif
+                                        </div>
+                                        <div class="user_text">
+                                            <p class="name">{{$users_name[$key]->Name}}</p>
+                                            <p class="comment">{{$review->reviews}}</p>
+                                        </div>
+                                    </li>
+                                @endif
                             @endforeach
                         @endif
                     </ul>
                     <!-- FORM POST REVIEW -->
-                    <form method="GET"
-                    action="">
                         <div class="container">
-                            <i class="warnning">🌽 PLEASE LOGIN BEFORE REVIEW 🌽</i>
-                            <div class="input_review">
-                                <p>Your review</p>
-                                <input type="hidden"
-                                name="product_id" value="{{$product->Pid}}">
-                                <textarea name="contents" id="review" maxlength="100"></textarea>
-                            </div>
-                            <button class="btn btn_review">SUBMIT</button>
+                            @if(!session('login'))
+                                <i class="warnning"> PLEASE LOGIN BEFORE REVIEW </i>
+                            @else
+                                @php
+                                    $payC=new \App\Http\Controllers\PaymentController();
+                                    $orderDs=$payC->getOrderDetail();
+                                    $check=false;
+                                    foreach ($orderDs as $key => $value) {
+                                        if($product->Pid==$value->Pid){
+                                            $check=true;
+                                            break;
+                                        }
+                                    }
+                                @endphp
+                                @if($check==true)
+                                    @if($reCheck==true)
+                                        <i class="warnning"> YOUR REVIEW </i>
+                                        <div class="your_review">
+                                            <div class="user_img">
+                                                @if($user->getAvata()!=null)
+                                                    <img src="data:image/jpeg;base64,{{$user->getAvata()}}" alt="">
+                                                @else
+                                                    <img src="{{asset('imgs/logo_website.png')}}" alt="">
+                                                @endif
+                                            </div>
+                                            <div class="user_text">
+                                                <p class="name">{{$your_name}}</p>
+                                                <p class="comment">{{$your_rev}}</p>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <form method="POST" action="{{route('putReview')}}" >
+                                            @csrf
+                                            <div class="input_review">
+                                                <p>Your review</p>
+                                                <input type="hidden"
+                                                name="product_id" value="{{$product->Pid}}">
+                                                <textarea name="contents" id="review" maxlength="100" required></textarea>
+                                                <button type="submit" id="submitReviewBtn" class="btn btn_review">SUBMIT</button>
+                                            </div>
+                                        </form>
+                                    @endif
+                                @else
+                                <i class="warnning"> YOU NEED TO BUY BEFORE REVIEW </i>
+                                @endif
+                            @endif
                         </div>
-                    </form>
                 </div>
             </div>
         </div>

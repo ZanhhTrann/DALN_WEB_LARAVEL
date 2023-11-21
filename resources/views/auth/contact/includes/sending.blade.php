@@ -1,5 +1,9 @@
+
 <div class="sending">
-    <form action="" method="POST">
+
+
+    <form action="{{ route('send.message') }}" method="POST">
+        @csrf
         <h4 class="text">Send Us A Message</h4>
         <div>
             <div class="icon">
@@ -8,8 +12,7 @@
             <input type="email" name="email" placeholder="Your Email Address">
         </div>
         <div>
-            <textarea name="message" id=""
-            placeholder="How Can We Help?"></textarea>
+            <textarea name="message" id="" placeholder="How Can We Help?"></textarea>
         </div>
         <button class="btn" type="submit">Submit</button>
     </form>

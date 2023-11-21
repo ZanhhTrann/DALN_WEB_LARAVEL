@@ -6,9 +6,17 @@
     position: relative;
     opacity: 1;
 }
-
+.your_review{
+    display: flex;
+}
+.icon.active i {
+    color: var(--blue); /* hoặc màu sắc bạn muốn sử dụng */
+}
 
 .detail_info .price {
+    padding-right:20px;
+    display: flex;
+    justify-content: space-between;
     font-size: 20px;
 }
 .detail_info .description {
@@ -75,7 +83,7 @@ select {
     display: none;
     visibility: hidden !important;
     opacity: 0;
-    transition: visibility .3s linear, 
+    transition: visibility .3s linear,
     opacity .15s linear;
 }
 
@@ -138,8 +146,8 @@ select {
 }
 .user_img {
     margin: 6px 10px 0 0;
-    width: 60px !important;
-    height: 60px;
+    width: 45px !important;
+    height: 45px;
     overflow: hidden;
     border-radius: 50%;
     display: flex;
@@ -253,7 +261,7 @@ select {
     .color,.size {
         justify-content: space-between;
     }
-    .detail_info form .size p, 
+    .detail_info form .size p,
     .detail_info form .color p {
         width: 60px;
     }

@@ -2,6 +2,42 @@
     /* header + spacing */
     padding: calc(80px + 40px) 0 85px;
 }
+
+.container_reatures {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 0 0 35px;
+    width: 100%;
+}
+
+.row1{
+    display:flex;
+}
+
+.custom-checkbox{
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+
+
+/* Thiết lập giao diện khi checkbox được chọn */
+.custom-checkbox:checked{
+    background-color: var(--blue); /* Màu nền xanh */
+    color: #fff; /* Màu chữ trắng */
+}
+
+.reatures{
+    display: flex;
+    height: fit-content;
+    align-items: flex-start;
+}
+
+.reatures .cart_info-table{
+    size:10px;
+    overflow: auto;
+}
+
 .section_features .container {
     display: flex;
     flex-wrap: wrap;
@@ -9,16 +45,38 @@
 }
 
 .cart_info, .cart_totals {
+    height: 550px;
     position: relative;
+    /* border-radius: 10px; */
     width: 100%;
     min-height: 1px;
 }
 
-.cart_info-table {
+.cart_info_content {
+    border-top: 1px solid var(--light-btn);
+    border-left: 1px solid var(--light-btn);
+    border-right: 1px solid var(--light-btn);
+    overflow: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 80%;
     border-collapse: collapse;
-    width: 100%;
+    /* width: 100%; */
 
 }
+.cart_info_content::-webkit-scrollbar {
+    width: 12px; /* Đặt chiều rộng thanh cuộn */
+}
+
+.cart_info_content::-webkit-scrollbar-thumb {
+    background-color: var(--blue); /* Màu nền của thanh cuộn */
+    border-radius: 10px; /* Độ cong góc của thanh cuộn */
+}
+.cart_info_content::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: var(--background-color); /* Màu nền phía sau thanh cuộn */
+}
+
 .cart_info-table tr {
     border-top: 1px solid var(--light-btn);
     border-bottom: 1px solid var(--light-btn);
@@ -26,7 +84,7 @@
     border-right: 1px solid var(--light-btn);
 }
 .cart_info-table th {
-    font-size: 15px;
+    font-size: 13px;
     color: var(--dark);
     text-transform: uppercase;
     line-height: 1.6;
@@ -34,9 +92,10 @@
     padding-bottom: 15px;
     text-align: center;
 }
+
 .cart_info-table .column-1 {
     width: 133px;
-    padding-left: 50px;
+    padding-left: 30px;
 }
 .cart_info-table .column-2 {
     width: 220px;
@@ -52,7 +111,7 @@
     /* text-align: right; */
 }
 .cart_info-table .table_row .column-1 {
-    padding: 0 0 0px 50px;
+    padding: 0 0 0px 30px;
 }
 .cart_info-table .table_row .column-1 p {
     /* padding: 0 5px; */
@@ -100,8 +159,9 @@
 }
 
 .table_row .num_product {
-    width: 140px;
-    height: 45px;
+    width: 100px;
+    height: 25px;
+    justify-content: space-between;
     border: 1px solid var(--light-btn);
     border-radius: 3px;
     overflow: hidden;
@@ -109,12 +169,13 @@
     /* flex-wrap: wrap; */
 }
 .num_product .input_num_product {
-    -webkit-appearance: none;  
-    appearance: none; 
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgb(255, 255, 255);
     font-size: 16px;
     line-height: 1.6;
     color: var(--dark);
-    width: calc(100% - 90px);
+    width: 40%;
     height: 100%;
     border-left: 1px solid var(--light-btn);
     border-right: 1px solid var(--light-btn);
@@ -130,7 +191,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 45px;
+    width: 30%;
     height: 100%;
     cursor: pointer;
 }
@@ -146,21 +207,19 @@
 
 
 .cart_interact {
+
     border-left: 1px solid var(--light-btn);
     border-right: 1px solid var(--light-btn);
     border-bottom: 1px solid var(--light-btn);
     display: flex;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 20%;
+    width: auto;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 18px 40px 15px;
-}
-
-.cart_interact_coupon {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 5px 20px 5px 0;
+    padding: 20px 40px 5% 10px;
 }
 .coupon_input {
     border: 1px solid var(--light-btn);
@@ -173,11 +232,10 @@
     margin: 5px 10px 5px 0;
     padding: 0 20px;
 }
-.coupon_btn,
 .update_btn {
     border: 1px solid var(--light-btn);
     border-radius: 22px;
-    background-color: var(--light-bg_features);
+    background-color: var(--light-btn);
     min-width: 163px;
     height: 45px;
     font-size: 15px;
@@ -189,7 +247,6 @@
     align-items: center;
     cursor: pointer;
 }
-.coupon_btn:hover,
 .update_btn:hover {
     background-color: var(--blue);
     color: var(--light-btn);
@@ -197,11 +254,11 @@
 
 
 
-
 .cart_totals-contents {
     padding: 30px 40px 40px;
     margin: 0 40px 0 60px;
     border: 1px solid var(--light-btn);
+    border-radius: 10px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -259,8 +316,21 @@
     color: var(--dark);
 }
 
+.Recipient_name{
+    display: flex;
+}
 
-
+#RecName{
+    margin-left: 10px;
+    border-radius: 5px;
+    min-width: 200px;
+    height: 30px;
+    outline: none;
+    border: 1px solid var(--light-btn);
+    padding: 4px 20px;
+    color: var(--dark);
+    font-size: 15px;
+}
 .cart_totals-contents div:last-child {
     /* height: 100%; */
     flex: 1;
@@ -276,9 +346,6 @@
 .checkout_btn:hover {
     background-color: var(--blue);
 }
-
-
-
 
 /* FEATURES PAY */
 .section_features-pay {
@@ -307,13 +374,13 @@
     padding-right: 50px;
 } */
 
-.bill_info label, 
+.bill_info label,
 .order_info label {
     margin-right: 10px;
     font-weight: bold;
 }
 
-.bill_info h4, 
+.bill_info h4,
 .order_info h4 {
     margin-bottom: 10px;
     font-size: 18px;
@@ -339,12 +406,21 @@
     font-size: 18px;
 }
 
+.address_item #street,.address_item #detail {
+    padding:0 10px ;
+    size: 12px;
+    width: 60%;
+    height: 45px;
+    border-radius: 5px;
+}
+
 .bill_info .phone_number {
     display: flex;
     /* justify-content: center; */
     align-items: center;
 }
 .bill_info .phone_number input {
+    border-radius: 5px;
     min-width: 200px;
     height: 30px;
     outline: none;
@@ -360,12 +436,12 @@
 .bill_info .delivery_address span {
     font-weight: bold;
 }
-.bill_info .delivery_address 
+.bill_info .delivery_address
 .delivery_address-item {
     width: 100%;
     padding: 20px 0 0 30px;
 }
-.bill_info .delivery_address 
+.bill_info .delivery_address
 .delivery_address-item .address_item {
     display: flex;
     justify-content: space-between;
@@ -375,25 +451,28 @@
     margin-bottom: 10px;
 }
 
-.bill_info .delivery_address 
+.bill_info .delivery_address
 .delivery_address-item .address_item select {
+    border-radius: 5px;
     min-width: 225px;
     height: 40px;
     outline: none;
     font-size: 15px;
 }
-.bill_info .delivery_address 
+.bill_info .delivery_address
 .delivery_address-item .address_item select * {
     font-size: 18px;
 }
 
 
-.bill_info .notes {
+.notes {
     display: flex;
     max-width: 80%;
     padding-top: 10px;
+
 }
-.bill_info .notes textarea {
+.notes textarea {
+    border-radius: 5px;
     width: 100%;
     min-height: 50px;
     height: 150px;
@@ -428,14 +507,14 @@
     flex-direction: column;
     margin: 20px 0;
     padding-right: 10px;
-    border-bottom: 
+    border-bottom:
     2px solid var(--light-border_features);
 }
 
 .order_product::-webkit-scrollbar {
     width: 5px;
 }
-  
+
 .order_product::-webkit-scrollbar-track {
     background: var(--dark);
 }
@@ -535,7 +614,7 @@
     margin: 30px 0;
 }
 .success .message i {
-    font-size: 20px;    
+    font-size: 20px;
     display: block;
     margin-bottom: 8px;
 }

@@ -1,12 +1,30 @@
 @php
     $selected=session('childSelected');
     // dd(session());
+    $prod=new \App\Http\Controllers\ProductsController();
+    if(session('login')){
+        $user=new \App\Http\Controllers\UsersController();
+        $cart=$user->getCart();
+        $favorite=$user->getFavorite();
+    }
     $products = session('visibleProducts_'.$selected,[]);
     $pages = session('pages');
     // dd($pages);
 @endphp
 @if(!empty($products))
     @foreach($products as $product)
+        @php
+            $check=false;
+            if(session('login')){
+
+                foreach($favorite as $item){
+                    if($item->Pid==$product->Pid){
+                        $check=true;
+                        break;
+                    }
+                }
+            }
+        @endphp
         <div class="products_list-item ">
             <form class="product-form" method="POST" action="{{ route('getQuickView') }}">
                 @csrf
@@ -20,7 +38,7 @@
                     <a href= "{{route('productDetail',['Pid'=>$product->Pid])}}" style="text-transform:capitalize;">
                         {{$product->Product_name}}
                     </a>
-                    <a href="" class="icon">
+                    <a href="{{route('updateFavorite',['Pid'=>$product->Pid])}}" class="icon {{ (session('login') && $check ? 'active' : '')}}">
                         <i class="fa-solid fa-heart"></i>
                     </a>
                 </div>
@@ -31,6 +49,9 @@
                 </div>
             </div>
         </div>
+        @php
+            $check=false;
+        @endphp
     @endforeach
 @else
 <div class="empty_cart">

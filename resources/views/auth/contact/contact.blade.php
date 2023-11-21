@@ -11,4 +11,5 @@
     </div>
     @include('auth.contact.includes.map')
 </div>
+<script src="{{asset('js/home.js')}}"></script>
 @endsection

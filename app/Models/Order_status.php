@@ -13,6 +13,7 @@ class Order_status extends Model
 
     protected $fillable = [
         'OSid',
+        'ODid',
         'Oid',
         'Status'
     ];

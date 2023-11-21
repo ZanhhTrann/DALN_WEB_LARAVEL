@@ -31,8 +31,8 @@
     <link rel="stylesheet" href="{{asset('css/layouts_css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/layouts_css/owl.css')}}">
     <link rel="stylesheet" href="{{asset('css/pages/home.css')}}">
-    <link rel="stylesheet" href="{{asset('css/pages/products.css')}}">
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/pages/products.css')}}"> --}}
+    {{-- <link rel="stylesheet" href="{{asset('css/style.css')}}"> --}}
     <!-- Link Responsive -->
     <link rel="stylesheet" href="{{asset('css/responsive/responsive.css')}}">
     <style>.header_menu .home a{color: var(--blue)}</style>
@@ -46,5 +46,49 @@
     @include('auth.includes.footer')
     {{-- <script src="{{asset('js/main.js')}}"></script> --}}
     <script src="{{asset('js/owl_carousel.js')}}"></script>
+    <script>
+        setTimeout(function() {
+        var statusNotification = document.getElementById('statusNotification');
+        if (statusNotification) {
+            statusNotification.classList.add('hide');
+        }
+
+        var errorNotification = document.getElementById('errorNotification');
+        if (errorNotification) {
+            errorNotification.classList.add('hide');
+        }
+    }, 5000);
+    </script>
+
+    <style>
+        .notification {
+            border-radius:10px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 12;
+            max-width: 380px; /* Giới hạn chiều rộng */
+            word-wrap: break-word; /* Tự động xuống dòng nếu quá chiều rộng */
+            white-space: pre-line;
+            transition: opacity 0.5s ease;
+        }
+
+        .notification.hide {
+            opacity: 0;
+        }
+
+        .status {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .error {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .warning {
+            background-color: #ff9800;
+            color: white;
+        }
 </body>
 </html>

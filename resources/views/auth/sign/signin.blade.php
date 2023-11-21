@@ -4,18 +4,14 @@
 @section('content')
 <div class="container">
     <h1>Register</h1>
-    <form action="" method="POST" enctype="multipart/form-data">
-        {{-- <div class="form-control_file">
-            <label>Chọn ảnh đại diện</label>
-            <input type="file" name="avatar" id="img"
-            accept="image/*" required>
-        </div> --}}
+    <form action="{{route('signin')}}" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="form-control">
-            <input type="text" name="name" required>
+            <input type="text" value="{{ old('name') }}" name="name" required>
             <label>Họ và tên</label>
         </div>
         <div class="form-control">
-            <input type="text" name="email" required>
+            <input type="text" value="{{ old('email') }}" name="email" required>
             <label>Email</label>
         </div>
         <div class="form-control">

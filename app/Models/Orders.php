@@ -14,9 +14,17 @@ class Orders extends Model
     protected $fillable = [
         'Oid',
         'Uid',
-        'Pid',
         'PMid',
-        'SMid',
+        'SPid',
+        'Order_name',
+        'Phone_number',
+        'id_tp',
+        'id_qh',
+        'id_xp',
+        'street',
+        'address',
+        'note',
+        'Total_products',
         'Total_order_price',
     ];
 }

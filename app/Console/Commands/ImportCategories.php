@@ -46,7 +46,61 @@ class ImportCategories extends Command
         }
     }
 
+    public function AdminCheckAdd($subCatArray,$paValue){
+        $tempCat=[];
+        if($paValue!=''){
+            $paValue=$paValue.'_';
+        }
+        foreach ($subCatArray as $category) {
+            if(empty($category['tagCodes'])){
+                $code='';
+            }else{
+                $code=$category['tagCodes'][0];
+            }
+            $value=$paValue.$category['CategoryValue'];
+            $existingCategory = Categories::where('Api_value',$value)->first();
+            if ($existingCategory) {
+                continue;
+            }
 
+            $categoryData = [
+                'Categories_name' => $category['CatName'],
+                'Api_value' =>  $value,
+                'Api_code' => $code
+                // Các trường khác bạn muốn nhập vào cơ sở dữ liệu
+            ];
+            array_push($tempCat,$categoryData);
+            if(!isset($category['CategoriesArray'])){
+                continue;
+            }
+            $this->AdminCheckAdd($category['CategoriesArray'],$value);
+        }
+        return $tempCat;
+    }
+
+    public function getNewCat(){
+        // Lấy dữ liệu từ API
+        $url = 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/categories/list';
+        $queryParameters = [
+            'lang' => 'en',
+            'country' => 'us',
+        ];
+
+        $headers = [
+            'X-Rapidapi-Key' => '532d9547bfmsh5628301a30a1296p1a5667jsne5fb9db39543',
+            'X-Rapidapi-Host' => 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com',
+        ];
+
+        $response = Http::withHeaders($headers)->get($url, $queryParameters);
+
+        if ($response->successful()) {
+            $data = $response->json();
+            return $this->AdminCheckAdd($data,'');
+            // Sau khi xử lý, bạn có thể lưu dữ liệu vào cơ sở dữ liệu như đã mô tả trong các câu trả lời trước.
+        } else {
+            return [];
+        }
+    }
 
     public function handle()
     {

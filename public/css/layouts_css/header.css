@@ -13,6 +13,7 @@
     height: 70px;
     box-shadow: 0 2px 5px var(--shadow);
 }
+
 #header .container,
 .header_logo,
 .header_menu,
@@ -339,7 +340,7 @@
     font-size: 14px;
     color: var(--dark);
     line-height: 1.3;
-    padding-bottom: 18px;
+    /* padding-bottom: 18px; */
     width: 170px;
     white-space: nowrap;
     overflow: hidden;
@@ -351,10 +352,14 @@
 .item_info .info_number,
 .item_info .info_number .quantity,
 .item_info .info_number .price {
-    font-size: 14px;
+    font-size: 10px;
     color: var(--light-text);
 }
 
+.info_size, .info_color,.info_size .size,.info_color .color{
+    font-size: 10px;
+    color: var(--light-text);
+}
 
 
 .header_cart-container .interact {

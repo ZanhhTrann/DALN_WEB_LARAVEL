@@ -6,9 +6,9 @@
         <div class="text">
             <div class="content">Address</div>
             <div class="title">
-                Toà nhà Đinh Trọng Dật CN1,
-                <br>P. Trịnh Văn Bô,
-                <br>Nam Từ Liêm, Hà Nội
+                Trường Đại Học Phenikaa,
+                <br>P. Nguyễn Trắc, Yên Nghĩa,
+                <br>Hà Đông, Hà Nội
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
         <div class="text">
             <div class="content">Lets Talk</div>
             <div class="title">
-                +84 86 255 1396
+                +84 037***4568
             </div>
         </div>
     </div>
@@ -30,7 +30,14 @@
         <div class="text">
             <div class="content">Sale Support</div>
             <div class="title">
-                vietcong1508@gmail.com
+                Danh-email:<br>
+                danh.trancong2002@gmail.com<br>
+                20010760@st.phenikaa-uni.edu.vn
+            </div>
+            <div class="title">
+                Quang-email:<br>
+                quang.duongvan2002@gmail.com<br>
+                20010792@st.phenikaa-uni.edu.vn
             </div>
         </div>
     </div>

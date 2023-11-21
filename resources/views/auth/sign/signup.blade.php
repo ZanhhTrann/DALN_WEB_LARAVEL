@@ -4,9 +4,10 @@
 @section('content')
 <div class="container">
     <h1>Please Login</h1>
-    <form action="" method="POST">
+    <form action="{{route('signup')}}" method="POST">
+        @csrf
         <div class="form-control">
-            <input name="email" type="text" required>
+            <input name="email" value="{{ old('email') }}" type="text" required>
             <label>Email</label>
         </div>
         <div class="form-control">
