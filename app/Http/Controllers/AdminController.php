@@ -61,4 +61,8 @@ class AdminController extends Controller
         ->orWhere('Phone_number', $re->input('search'))->get();
         return view('admin.order.order',['orders'=>$orders]);
     }
+    public function Signout(){
+        Session::forget('login_admin');
+        return redirect()->intended('/admin');
+    }
 }

@@ -33,7 +33,7 @@
             <div class="mr-4 dropdown">
                 <span class="font-semibold">Admin {{session('login_admin')['admin_name']}}</span>
                 <div class="dropdown-content">
-                    <a href="#">Logout</a>
+                    <a href="{{route('signout')}}">Logout</a>
                     <!-- Thêm các mục menu khác nếu cần -->
                 </div>
             </div>

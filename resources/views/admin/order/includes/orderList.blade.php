@@ -1,12 +1,5 @@
 {{-- <link rel="stylesheet" href="{{asset('css/pages/products.css')}}"> --}}
 {{-- <link rel="stylesheet" href="{{asset('css/pages/home.css')}}"> --}}
-
-@php
-    $catController=new \App\Http\Controllers\CategoriesController();
-    $perCats=$catController->__getCats('');
-    $products=session('adminProducts')['visibleProducts_'.session('admin_selected')]
-    // dd($childCat);
-@endphp
 <section>
     <form action="{{route('searchOrder')}}" method="post">
         @csrf

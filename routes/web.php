@@ -83,6 +83,7 @@ Route::get('/admin',function(){
 Route::get('/admin/login', 'App\Http\Controllers\PagesController@__pageAdminLoginView')->name('signup_Admin');
 Route::post('/admin/checkSignin','App\Http\Controllers\AdminController@postLogin')->name('checkSignin');
 Route::get('/admin/dashboard', 'App\Http\Controllers\PagesController@__pageDashboardView')->name('dashboard');
+Route::get('/admin/signout', 'App\Http\Controllers\AdminController@Signout')->name('signout');
 // categories
 Route::get('/admin/categories/add', 'App\Http\Controllers\PagesController@CasAddView')->name('CasAddView');
 Route::get('/admin/categories/Api_add', 'App\Http\Controllers\PagesController@AddformApiView')->name('AddformApiView');

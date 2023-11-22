@@ -53,13 +53,15 @@ class UsersController extends Controller
                     Auth::login($user);
                     if(session('f_check')==true){
                         session(['f_check'=>false]);
+                        $pid=session('f_id');
                         Session::forget('f_id');
-                        return redirect()->route('updateFavorite',['Pid'=>session('f_id')]);
+                        return redirect()->route('updateFavorite',['Pid'=>$pid]);
                     }
                     if(session('c_check')==true){
                         session(['c_check'=>false]);
+                        $cid=session('c_id');
                         Session::forget('c_id');
-                        return redirect()->route('productDetail',['Pid'=>session('c_id')]);
+                        return redirect()->route('productDetail',['Pid'=>$cid]);
                     }
                     return redirect()->intended('/');
                 } else {
@@ -99,13 +101,15 @@ class UsersController extends Controller
         Auth::login($user);
         if(session('f_check')==true){
             session(['f_check'=>false]);
+            $pid=session('f_id');
             Session::forget('f_id');
-            return redirect()->route('updateFavorite',['Pid'=>session('f_id')]);
+            return redirect()->route('updateFavorite',['Pid'=>$pid]);
         }
         if(session('c_check')==true){
             session(['c_check'=>false]);
+            $cid=session('c_id');
             Session::forget('c_id');
-            return redirect()->route('productDetail',['Pid'=>session('c_id')]);
+            return redirect()->route('productDetail',['Pid'=>$cid]);
         }
         return redirect()->intended('/');
     }
@@ -145,7 +149,10 @@ class UsersController extends Controller
         if(session('head_pages')!='shop'){
             session(['head_pages'=>'shop']);
         }
-        if(session('login')){
+        if(!session('login')){
+            session(['f_check'=>true,'f_id'=>$Pid]);
+            return redirect()->route('pages.index',['page'=>'signup']);
+        }
             $favorite = User_favorite::where('Pid', $Pid)->first();
             if ($favorite) {
                 $favorite->delete();
@@ -155,10 +162,6 @@ class UsersController extends Controller
                     'Pid' => $Pid,
                 ]);
             }
-        }else{
-            session(['f_check'=>true,'f_id'=>$Pid]);
-            return redirect()->route('pages.index',['page'=>'signup']);
-        }
         return redirect()->route('productDetail',['Pid'=>$Pid]);
     }
     public function updateCart(Request $request,$Pid)
@@ -167,7 +170,11 @@ class UsersController extends Controller
         if(session('head_pages')!='shop'){
             session(['head_pages'=>'shop']);
         }
-        if(session('login')){
+        if(!session('login')){
+            session(['c_check'=>true,'c_id'=>$Pid]);
+            return redirect()->route('pages.index',['page'=>'signup']);
+
+        }
             $validatedData = $request->validate([
                 'size_id' => 'required',
                 'color_id' => 'required',
@@ -190,10 +197,6 @@ class UsersController extends Controller
                 'color'=> $color,
                 'size'=>$size
             ]);
-        }else{
-            session(['c_check'=>true,'c_id'=>$Pid]);
-            return redirect()->route('pages.index',['page'=>'signup']);
-        }
         return redirect()->route('productDetail',['Pid'=>$Pid]);
     }
 
